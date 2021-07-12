@@ -11,7 +11,9 @@
       :results="results"
       :totalCorrect="totalCorrect"
     ></app-result>
-    <button type="button" class="reset-btn">Reset</button>
+    <button type="button" class="reset-btn" @click.prevent="reset">
+      Reset
+    </button>
   </div>
 </template>
 
@@ -119,6 +121,10 @@ export default {
     questionAnswered(isCorrect) {
       if (isCorrect) this.totalCorrect++;
       this.questionsAnswered++;
+    },
+    reset() {
+      this.questionsAnswered = 0;
+      this.totalCorrect = 0;
     }
   }
 };
