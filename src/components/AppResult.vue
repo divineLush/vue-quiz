@@ -26,7 +26,7 @@ export default {
       return this.results[this.resultIndex].title;
     },
     description() {
-      return this.results[this.resultIndex].description;
+      return this.results[this.resultIndex].desc;
     },
     resultIndex() {
       let resIndex = 0;

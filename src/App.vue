@@ -1,16 +1,18 @@
 <template>
   <div class="ctr">
-    <app-questions
-      v-if="isQuestionVisible"
-      :questions="questions"
-      :questionsAnswered="questionsAnswered"
-      @question-answered="questionAnswered"
-    ></app-questions>
-    <app-result
-      v-else
-      :results="results"
-      :totalCorrect="totalCorrect"
-    ></app-result>
+    <transition name="fade" mode="out-in">
+      <app-questions
+        v-if="isQuestionVisible"
+        :questions="questions"
+        :questionsAnswered="questionsAnswered"
+        @question-answered="questionAnswered"
+      ></app-questions>
+      <app-result
+        v-else
+        :results="results"
+        :totalCorrect="totalCorrect"
+      ></app-result>
+    </transition>
     <button type="button" class="reset-btn" @click.prevent="reset">
       Reset
     </button>

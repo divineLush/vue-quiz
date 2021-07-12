@@ -4,26 +4,28 @@
       <div class="bar" :style="statusBarWidth"></div>
       <div class="status">{{ statusBarText }}</div>
     </div>
-    <div
-      class="single-question"
-      v-for="(question, index) in questions"
-      :key="question.q"
-      :questionsAnswered="questionsAnswered"
-    >
-      <template v-if="questionsAnswered === index">
-        <div class="question">{{ question.q }}</div>
-        <div class="answers">
-          <button
-            class="answer"
-            v-for="answer in question.answers"
-            :key="answer.text"
-            @click.prevent="selectAnswer(answer.is_correct)"
-          >
-            {{ answer.text }}
-          </button>
-        </div>
-      </template>
-    </div>
+    <transition-group name="fade">
+      <div
+        class="single-question"
+        v-for="(question, index) in questions"
+        :key="question.q"
+        :questionsAnswered="questionsAnswered"
+      >
+        <template v-if="questionsAnswered === index">
+          <div class="question">{{ question.q }}</div>
+          <div class="answers">
+            <button
+              class="answer"
+              v-for="answer in question.answers"
+              :key="answer.text"
+              @click.prevent="selectAnswer(answer.is_correct)"
+            >
+              {{ answer.text }}
+            </button>
+          </div>
+        </template>
+      </div>
+    </transition-group>
   </div>
 </template>
 
